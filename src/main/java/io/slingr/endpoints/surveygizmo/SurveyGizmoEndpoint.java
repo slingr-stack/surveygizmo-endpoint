@@ -53,7 +53,7 @@ public class SurveyGizmoEndpoint extends HttpEndpoint {
         case "eu":
           return EU_API_URL;
       }
-      throw "Invalid location";
+      throw new RuntimeException("Invalid location");
     }
 
     @EndpointWebService
@@ -132,7 +132,7 @@ public class SurveyGizmoEndpoint extends HttpEndpoint {
             params = Json.map();
         }
         params.set("api_token", apiToken);
-        params.set("api_secret_token", apiSecretToken);
+        params.set("api_token_secret", apiTokenSecret);
         Json headers = body.json("headers");
         if (headers == null) {
             headers = Json.map();
