@@ -1,0 +1,97 @@
+{
+    "label": "SurveyGizmo",
+    "name": "surveygizmo",
+    "apiVersion": "v1",
+    "internal": false,
+    "configurationType": "GLOBAL",
+    "deployment": {
+        "profiles":[
+            {
+                "name": "default",
+                "label": "Default",
+                "memory": 256,
+                "description": "Default configuration"
+            }
+        ],
+        "allowMultipleInstances": true
+    },
+    "status": "ACTIVE",
+    "stores": [],
+    "events": [
+        {
+            "label": "Webhook",
+            "name": "webhook",
+            "description": "Happens when a SurveyGizmo webhook hits the endpoint URL."
+        }
+    ],
+    "functions": [
+        {
+            "label": "GET",
+            "name": "_get"
+        },
+        {
+            "label": "POST",
+            "name": "_post"
+        },
+        {
+            "label": "PATCH",
+            "name": "_patch"
+        },
+        {
+            "label": "PUT",
+            "name": "_put"
+        },
+        {
+            "label": "DELETE",
+            "name": "_delete"
+        }
+    ],
+    "scripts":[
+        "functions.js",
+        "surveygizmo-helpers.js"
+    ],
+    "configuration":[
+        {
+            "label": "API Token",
+            "name": "apiToken",
+            "type": "text",
+            "required": true
+        },
+        {
+            "label": "API Token Secret",
+            "name": "apiTokenSecret",
+            "type": "text",
+            "required": true
+        },
+        {
+            "name": "location",
+            "label": "Location",
+            "type": "buttonsGroup",
+            "required": true,
+            "defaultValue": "us",
+            "typeOptions": {
+                "allowCustom": true,
+                "possibleValues":[
+                    {
+                        "label":"US",
+                        "name":"us"
+                    },
+                    {
+                        "label":"CA",
+                        "name":"ca"
+                    },
+                    {
+                        "label":"EU",
+                        "name":"eu"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "webhook",
+            "label": "Webhook URL",
+            "type": "label",
+            "value": "@config.WEBHOOK_URL"
+        }
+    ]
+}
