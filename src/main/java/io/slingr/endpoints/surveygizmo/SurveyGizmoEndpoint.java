@@ -27,9 +27,9 @@ import org.slf4j.LoggerFactory;
 public class SurveyGizmoEndpoint extends HttpEndpoint {
 
     private static final Logger logger = LoggerFactory.getLogger(SurveyGizmoEndpoint.class);
-    private static String US_API_URL = "https://restapi.surveygizmo.com/v5	";
-    private static String CA_API_URL = "https://restapica.surveygizmo.com/v5	";
-    private static String EU_API_URL = "https://restapi.surveygizmo.eu/v5	";
+    private static String US_API_URL = "https://restapi.surveygizmo.com/v5";
+    private static String CA_API_URL = "https://restapica.surveygizmo.com/v5";
+    private static String EU_API_URL = "https://restapi.surveygizmo.eu/v5";
 
     @EndpointProperty
     private String apiToken;
@@ -59,7 +59,6 @@ public class SurveyGizmoEndpoint extends HttpEndpoint {
     @EndpointWebService
     public WebServiceResponse webhooks(WebServiceRequest request) {
         final Json json = HttpService.defaultWebhookConverter(request);
-        // TODO check validation token
         if (request.getMethod().equals(RestMethod.POST)) {
             if (request.getBody() != null) {
                 json.set("body", request.getBody());
@@ -143,6 +142,7 @@ public class SurveyGizmoEndpoint extends HttpEndpoint {
             headers.set("Content-Type", "application/json");
         }
         body.set("headers", headers);
+        body.set("params", params);
     }
 
 }
