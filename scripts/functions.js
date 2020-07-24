@@ -93,7 +93,7 @@ var checkHttpOptions = function (url, options) {
                 options.body = convertJsonToForm(options.body);
             }
         } else {
-            if (!!options.path || !!options.params || !!options.body || !!options.headers) {
+            if (!!options.params && !!options.body && !!options.headers) {
                 // options contains the http package format
                 options.path = url;
                 if (options.body) {
