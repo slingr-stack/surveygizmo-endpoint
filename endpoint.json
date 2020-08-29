@@ -13,7 +13,7 @@
                 "description": "Default configuration"
             }
         ],
-        "allowMultipleInstances": true
+        "allowMultipleInstances": false
     },
     "status": "ACTIVE",
     "stores": [],
